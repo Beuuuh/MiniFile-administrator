@@ -11,7 +11,7 @@ int HasFiles(char directory[256]) {
     sprintf(command, "dir /b %s > temp.txt", directory);
     system(command);
 
-    f = fopen("temp.txt", "w");
+    f = fopen("temp.txt", "r");
 
     if(f == NULL) {
         remove("temp.txt");
@@ -25,6 +25,12 @@ int HasFiles(char directory[256]) {
     fclose(f);
     remove("temp.txt");
     return found;
+}
+
+void gotoDirectory(char directory[256]) {
+    char command[256];
+    sprintf(command, "cd  %s", directory);
+    system(command);
 }
 
 int main() {
@@ -42,12 +48,11 @@ int main() {
             scanf("%d", &choice);
         } while(choice <= 8 && choice >= 1);
     } else {
-        printf("1.Create directory 2.Create text file");
+        printf("1.Create directory 2.Create text file: ");
 
         do {
             system("cls");
-            printf("1.Create directory 2.Create text file");
+            printf("1.Create directory 2.Create text file: ");
             scanf("%d", &choice);
-        } while(choice == 1 || choice == 2);
-    }
+        } while(choice != 1 || choice != 2);
 }
