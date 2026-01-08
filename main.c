@@ -30,14 +30,24 @@ int HasFiles(char directory[256]) {
 int main() {
     int choice;
 
-    do {
-        printf("Mini File Administrator\n");
-        printf("Choose your option:\n");
+    printf("Mini File Administrator\n");
+    printf("Choose your option:\n");
 
-        if(HasFiles(".") == 1) {
-            printf("1.Go to another directory 2.Delete directory 3.Rename directory 4.Create text file 5.Rename text file 6.Edit text file 7.Delete text file: ");
-        }
+    if(HasFiles(".") == 1) {
+        printf("1.Create directory 2.Go to another directory 3.Delete directory 4.Rename directory 5.Create text file 6.Rename text file 7.Edit text file 8.Delete text file: ");
         
-        scanf("%d", &choice);
-    } while(choice <= 7 && choice >= 1);
+        do {
+            system("cls");
+            printf("1.Create directory 2.Go to another directory 3.Delete directory 4.Rename directory 5.Create text file 6.Rename text file 7.Edit text file 8.Delete text file: ");
+            scanf("%d", &choice);
+        } while(choice <= 8 && choice >= 1);
+    } else {
+        printf("1.Create directory 2.Create text file");
+
+        do {
+            system("cls");
+            printf("1.Create directory 2.Create text file");
+            scanf("%d", &choice);
+        } while(choice == 1 || choice == 2);
+    }
 }
